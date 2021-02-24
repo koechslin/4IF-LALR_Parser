@@ -1,11 +1,11 @@
 /*************************************************************************
-                           Symbole  -  Implementation
+                           E8  -  Implementation
                              -------------------
     début                : 23/02/2021
     copyright            : (C) 2021 par Killian OECHSLIN et Thomas MIGNOT
 *************************************************************************/
 
-//---------- Réalisation de la classe <Symbole> (fichier symbole.cpp) ------------
+//---------- Réalisation de la classe <E8> (fichier E8.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,32 +14,38 @@
 
 using namespace std;
 //------------------------------------------------------ Include personnel
-#include "symbole.h"
-
+#include "E8.h"
+#include "Expr.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Symbole::Affiche() {
-   cout<<Etiquettes[ident];
-}
-
-bool Symbole::IsTerminal() {
-   return true;
-}
-
-void Entier::Affiche() {
-   Symbole::Affiche();
-   cout<<"("<<valeur<<")";
-}
-
-int Entier::GetValeur() {
-   return valeur;
-}
-
-bool Entier::IsTerminal() {
-   return true;
+bool E8::Transition(Automate & automate, Symbole * s) {
+    Expr * expr1;
+    Expr * expr2;
+    switch(*s){
+        case PLUS:
+        case MULT:
+        case CLOSEPAR:
+        case FIN:
+            expr1 = (Expr*) automate.PopSymbole();
+            delete(automate.PopSymbole()); // On enlève le '*'
+            expr2 = (Expr*) automate.PopSymbole();
+            automate.Reduction(3, new Expr(expr1->GetValeur() * expr2->GetValeur()));
+            delete(expr1);
+            delete(expr2);
+            break;
+        default:
+            automate.SetError();
+            cout << "Erreur dans l'état E8 :" << endl;
+            cout << "Symboles attendus : PLUS, MULT, CLOSEPAR, FIN" << endl;
+            cout << "Symbole lu : ";
+            s->Affiche();
+            cout << endl;
+            return true;
+    }
+    return false;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

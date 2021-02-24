@@ -1,11 +1,11 @@
 /*************************************************************************
-                           Symbole  -  Implementation
+                           Expr  -  Implementation
                              -------------------
     début                : 23/02/2021
     copyright            : (C) 2021 par Killian OECHSLIN et Thomas MIGNOT
 *************************************************************************/
 
-//---------- Réalisation de la classe <Symbole> (fichier symbole.cpp) ------------
+//---------- Réalisation de la classe <Expr> (fichier Expr.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,34 +14,24 @@
 
 using namespace std;
 //------------------------------------------------------ Include personnel
-#include "symbole.h"
-
+#include "Expr.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Symbole::Affiche() {
-   cout<<Etiquettes[ident];
+bool Expr::IsTerminal() {
+    return false;
 }
 
-bool Symbole::IsTerminal() {
-   return true;
+void Expr::Affiche() {
+    Symbole::Affiche();
+    cout << "(" << valeur << ")";
 }
 
-void Entier::Affiche() {
-   Symbole::Affiche();
-   cout<<"("<<valeur<<")";
+int Expr::GetValeur() {
+    return valeur;
 }
-
-int Entier::GetValeur() {
-   return valeur;
-}
-
-bool Entier::IsTerminal() {
-   return true;
-}
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

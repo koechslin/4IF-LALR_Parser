@@ -1,11 +1,11 @@
 /*************************************************************************
-                           Symbole  -  Implementation
+                           Etat  -  Implementation
                              -------------------
     début                : 23/02/2021
     copyright            : (C) 2021 par Killian OECHSLIN et Thomas MIGNOT
 *************************************************************************/
 
-//---------- Réalisation de la classe <Symbole> (fichier symbole.cpp) ------------
+//---------- Réalisation de la classe <Etat> (fichier etat.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,32 +14,14 @@
 
 using namespace std;
 //------------------------------------------------------ Include personnel
-#include "symbole.h"
-
+#include "etat.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Symbole::Affiche() {
-   cout<<Etiquettes[ident];
-}
-
-bool Symbole::IsTerminal() {
-   return true;
-}
-
-void Entier::Affiche() {
-   Symbole::Affiche();
-   cout<<"("<<valeur<<")";
-}
-
-int Entier::GetValeur() {
-   return valeur;
-}
-
-bool Entier::IsTerminal() {
-   return true;
+void Etat::Afficher() const {
+  cout << name << endl;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
