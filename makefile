@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -g -ansi -pedantic -Wall -std=c++11
 
 MAIN = parser
-SRCS = main.cpp lexer.cpp symbole.cpp
+SRCS = *.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 $(MAIN) : $(OBJS)
