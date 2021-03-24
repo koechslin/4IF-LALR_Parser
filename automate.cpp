@@ -14,75 +14,81 @@
 
 using namespace std;
 //------------------------------------------------------ Include personnel
-#include "automate.h"
-#include "E0.h"
 #include "Expr.h"
+#include "automate.h"
+#include "etat.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Automate::Reduction(int n, Symbole* s) {
-  for(int i=0;i<n;i++){
-    delete(pileEtats.back());
-    pileEtats.pop_back();
-  }
+void Automate::Reduction(int n, Symbole *s)
+{
+    for (int i = 0; i < n; i++) {
+        delete (pileEtats.back());
+        pileEtats.pop_back();
+    }
 
-  pileEtats.back()->Transition(*this, s);
+    pileEtats.back()->Transition(*this, s);
 }
 
-void Automate::Decalage(Symbole * s, Etat * e) {
-  pileSymboles.push_back(s);
-  pileEtats.push_back(e);
-  if(s->IsTerminal()) {
-    lexer->Avancer();
-  }
+void Automate::Decalage(Symbole *s, Etat *e)
+{
+    pileSymboles.push_back(s);
+    pileEtats.push_back(e);
+    if (s->IsTerminal()) {
+        lexer->Avancer();
+    }
 }
 
-void Automate::Lecture() {
-  Symbole * s;
-  bool fin = false;
-  while(!fin) {
-    s = lexer->Consulter();
-    fin = pileEtats.back()->Transition(*this, s);
-  }
+void Automate::Lecture()
+{
+    Symbole *s;
+    bool fin = false;
+    while (!fin) {
+        s = lexer->Consulter();
+        fin = pileEtats.back()->Transition(*this, s);
+    }
 
-  if(!error) {
-    cout << "Résultat final : " << ((Expr*) pileSymboles.back())->GetValeur() << endl;
-  }
-  // On libère la mémoire
-  for(int i = pileSymboles.size() - 1; i>=0; i--) {
-    delete(pileSymboles.back());
+    if (!error) {
+        cout << "Résultat final : " << ((Expr *)pileSymboles.back())->GetValeur() << endl;
+    }
+    // On libère la mémoire
+    for (int i = pileSymboles.size() - 1; i >= 0; i--) {
+        delete (pileSymboles.back());
+        pileSymboles.pop_back();
+    }
+
+    for (int i = pileEtats.size() - 1; i >= 0; i--) {
+        delete (pileEtats.back());
+        pileEtats.pop_back();
+    }
+
+    delete (s);
+}
+
+Symbole *Automate::PopSymbole()
+{
+    Symbole *s = pileSymboles.back();
     pileSymboles.pop_back();
-  }
-
-  for(int i = pileEtats.size() - 1; i>=0; i--) {
-    delete(pileEtats.back());
-    pileEtats.pop_back();
-  }
-
-  delete(s);
+    return s;
 }
 
-Symbole * Automate::PopSymbole() {
-  Symbole * s = pileSymboles.back();
-  pileSymboles.pop_back();
-  return s;
-}
-
-void Automate::SetError() {
-  error = true;
+void Automate::SetError()
+{
+    error = true;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Automate::Automate(Lexer * l) : lexer(l), error(false) {
-  pileEtats.push_back(new E0);
+Automate::Automate(Lexer *l) : lexer(l), error(false)
+{
+    pileEtats.push_back(new E0);
 }
 
-Automate::~Automate() {
-
+Automate::~Automate()
+{
 }
 
 //------------------------------------------------------------------ PRIVE
