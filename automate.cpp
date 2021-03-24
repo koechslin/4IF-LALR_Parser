@@ -113,6 +113,10 @@ bool Automate::GetError() {
     return this->error;
 }
 
+Lexer * Automate::GetLexer() {
+    return this->lexer;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

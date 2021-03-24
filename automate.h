@@ -49,6 +49,8 @@ class Automate {
 
     bool GetError();
 
+    Lexer * GetLexer();
+
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur

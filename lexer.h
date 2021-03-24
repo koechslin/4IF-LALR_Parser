@@ -31,6 +31,10 @@ class Lexer {
 
     void Avancer();
 
+    string GetFlux();
+
+    int GetTete();
+
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur

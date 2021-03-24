@@ -25,6 +25,29 @@ void Etat::Afficher() const {
     cout << name << endl;
 }
 
+void Etat::AfficherErreur(Automate & automate, Symbole * s, string etat, string grammaireAutorisee) {
+    cout << "Erreur dans l'état " << etat << " : " << endl;
+    cout << "" << automate.GetLexer()->GetFlux() << "\n";
+
+    int iMax = *s == FIN ? automate.GetLexer()->GetTete() : automate.GetLexer()->GetTete() - 1;
+
+    for (int i = 0; i < iMax; i++) {
+        cout << " ";
+    }
+
+    cout << "^\n";
+
+    if (*s == ERREUR) {
+        cout << "Symbole '" << automate.GetLexer()->GetFlux()[automate.GetLexer()->GetTete() - 1] << "' non reconnu." << endl;
+    } else if (*s == FIN) {
+        cout << "Symbole 'FIN' inattendu." << endl;
+    } else {
+        cout << "Symbole '" << automate.GetLexer()->GetFlux()[automate.GetLexer()->GetTete() - 1] << "' inattendu." << endl;
+    }
+
+    cout << "Symboles attendus : " << grammaireAutorisee << endl;
+}
+
 //---------- Réalisation de la classe <E0> (fichier etat.cpp) ------------
 bool E0::Transition(Automate & automate, Symbole * s) {
     switch (*s) {
@@ -39,11 +62,7 @@ bool E0::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E0 :" << endl;
-            cout << "Symboles attendus : INT, OPENPAR, EXPR" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E0", "INT, (");
             return true;
     }
     return false;
@@ -63,11 +82,7 @@ bool E1::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E1 :" << endl;
-            cout << "Symboles attendus : PLUS, MULT, FIN" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E1", "+, *, FIN");
             return true;
     }
     return false;
@@ -87,11 +102,7 @@ bool E2::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E2 :" << endl;
-            cout << "Symboles attendus : INT, OPENPAR, EXPR" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E2", "INT, (");
             return true;
     }
     return false;
@@ -112,11 +123,7 @@ bool E3::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E3 :" << endl;
-            cout << "Symboles attendus : PLUS, MULT, CLOSEPAR, FIN" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E3", "+, *, ), FIN");
             return true;
     }
     return false;
@@ -136,11 +143,7 @@ bool E4::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E4 :" << endl;
-            cout << "Symboles attendus : INT, OPENPAR, EXPR" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E4", "INT, (");
             return true;
     }
     return false;
@@ -160,11 +163,7 @@ bool E5::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E5 :" << endl;
-            cout << "Symboles attendus : INT, OPENPAR, EXPR" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E5", "INT, (");
             return true;
     }
     return false;
@@ -184,11 +183,7 @@ bool E6::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E6 :" << endl;
-            cout << "Symboles attendus : PLUS, MULT, CLOSEPAR" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E6", "+, *, )");
             return true;
     }
     return false;
@@ -219,11 +214,7 @@ bool E7::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E7 :" << endl;
-            cout << "Symboles attendus : PLUS, MULT, CLOSEPAR, FIN" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E7", "+, *, ), FIN");
             return true;
     }
     return false;
@@ -252,11 +243,7 @@ bool E8::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E8 :" << endl;
-            cout << "Symboles attendus : PLUS, MULT, CLOSEPAR, FIN" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E8", "+, *, ), FIN");
             return true;
     }
     return false;
@@ -277,11 +264,7 @@ bool E9::Transition(Automate & automate, Symbole * s) {
             break;
         default:
             automate.SetError();
-            cout << "Erreur dans l'état E9 :" << endl;
-            cout << "Symboles attendus : PLUS, MULT, CLOSEPAR, FIN" << endl;
-            cout << "Symbole lu : ";
-            s->Affiche();
-            cout << endl;
+            this->AfficherErreur(automate, s, "E9", "+, *, ), FIN");
             return true;
     }
     return false;

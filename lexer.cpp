@@ -67,6 +67,14 @@ void Lexer::Avancer() {
     tampon = nullptr;
 }
 
+string Lexer::GetFlux() {
+    return this->flux;
+}
+
+int Lexer::GetTete() {
+    return this->tete;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

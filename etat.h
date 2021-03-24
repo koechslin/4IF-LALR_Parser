@@ -33,6 +33,8 @@ class Etat {
 
     virtual bool Transition(Automate & automate, Symbole * s) = 0;
 
+    void AfficherErreur(Automate & automate, Symbole * s, string etat, string grammaireAutorisee);
+
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
