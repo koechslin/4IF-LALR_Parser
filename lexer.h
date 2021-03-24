@@ -9,8 +9,8 @@
 #pragma once
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string>
 #include "symbole.h"
+#include <string>
 
 using namespace std;
 //------------------------------------------------------------- Constantes
@@ -24,24 +24,27 @@ using namespace std;
 //------------------------------------------------------------------------
 
 class Lexer {
-   //----------------------------------------------------------------- PUBLIC
-   public:
-      //----------------------------------------------------- Méthodes publiques
-      Symbole * Consulter();
-      void Avancer();
+    //----------------------------------------------------------------- PUBLIC
+  public:
+    //----------------------------------------------------- Méthodes publiques
+    Symbole * Consulter();
 
-      //------------------------------------------------- Surcharge d'opérateurs
+    void Avancer();
 
-      //-------------------------------------------- Constructeurs - destructeur
-      Lexer(string s) : flux(s), tete(0), tampon(nullptr) { }
-      ~Lexer() { }
+    //------------------------------------------------- Surcharge d'opérateurs
 
-   //------------------------------------------------------------------ PRIVE
-   protected:
-      //----------------------------------------------------- Méthodes protégées
+    //-------------------------------------------- Constructeurs - destructeur
+    Lexer(string s)
+        : flux(s), tete(0), tampon(nullptr) {}
 
-      //----------------------------------------------------- Attributs protégés
-      string flux;
-      int tete;
-      Symbole * tampon;
+    ~Lexer() {}
+
+    //------------------------------------------------------------------ PRIVE
+  protected:
+    //----------------------------------------------------- Méthodes protégées
+
+    //----------------------------------------------------- Attributs protégés
+    string flux;
+    int tete;
+    Symbole * tampon;
 };

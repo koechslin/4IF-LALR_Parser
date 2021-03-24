@@ -13,10 +13,17 @@
 
 using namespace std;
 //------------------------------------------------------------- Constantes
-const string Etiquettes[] = { "OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT", "FIN", "ERREUR", "EXPR" };
+const string Etiquettes[] = {"OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT", "FIN", "ERREUR", "EXPR"};
 
 //------------------------------------------------------------------ Types
-enum Identificateurs { OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR, EXPR };
+enum Identificateurs { OPENPAR,
+                       CLOSEPAR,
+                       PLUS,
+                       MULT,
+                       INT,
+                       FIN,
+                       ERREUR,
+                       EXPR };
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Symbole>
@@ -24,49 +31,56 @@ enum Identificateurs { OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR, EXPR };
 //
 //------------------------------------------------------------------------
 
-
 class Symbole {
-   //----------------------------------------------------------------- PUBLIC
-   public:
-      //----------------------------------------------------- Méthodes publiques
-      virtual void Affiche();
-      virtual bool IsTerminal();
+    //----------------------------------------------------------------- PUBLIC
+  public:
+    //----------------------------------------------------- Méthodes publiques
+    virtual void Affiche();
 
-      //------------------------------------------------- Surcharge d'opérateurs
-      operator int() const { return ident; }
+    virtual bool IsTerminal();
 
-      //-------------------------------------------- Constructeurs - destructeur
-      Symbole(int i) : ident(i) {  }
-      virtual ~Symbole() { }
+    //------------------------------------------------- Surcharge d'opérateurs
+    operator int() const {
+        return ident;
+    }
 
-   //------------------------------------------------------------------ PRIVE
-   protected:
-      //----------------------------------------------------- Méthodes protégées
+    //-------------------------------------------- Constructeurs - destructeur
+    Symbole(int i)
+        : ident(i) {}
 
-      //----------------------------------------------------- Attributs protégés
-      int ident;
-      bool isTerminal;
+    virtual ~Symbole() {}
+
+    //------------------------------------------------------------------ PRIVE
+  protected:
+    //----------------------------------------------------- Méthodes protégées
+
+    //----------------------------------------------------- Attributs protégés
+    int ident;
+    bool isTerminal;
 };
 
 class Entier : public Symbole {
-   //----------------------------------------------------------------- PUBLIC
-   public:
-      //----------------------------------------------------- Méthodes publiques
-      virtual void Affiche();
-      virtual int GetValeur();
-      virtual bool IsTerminal();
+    //----------------------------------------------------------------- PUBLIC
+  public:
+    //----------------------------------------------------- Méthodes publiques
+    virtual void Affiche();
 
-      //------------------------------------------------- Surcharge d'opérateurs
+    virtual int GetValeur();
 
-      //-------------------------------------------- Constructeurs - destructeur
-      Entier(int v) : Symbole(INT), valeur(v) { }
-      ~Entier() { }
+    virtual bool IsTerminal();
 
-   //------------------------------------------------------------------ PRIVE
-   protected:
-      //----------------------------------------------------- Méthodes protégées
+    //------------------------------------------------- Surcharge d'opérateurs
 
-      //----------------------------------------------------- Attributs protégés
-      int valeur;
+    //-------------------------------------------- Constructeurs - destructeur
+    Entier(int v)
+        : Symbole(INT), valeur(v) {}
+
+    ~Entier() {}
+
+    //------------------------------------------------------------------ PRIVE
+  protected:
+    //----------------------------------------------------- Méthodes protégées
+
+    //----------------------------------------------------- Attributs protégés
+    int valeur;
 };
-

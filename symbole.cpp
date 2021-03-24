@@ -22,24 +22,24 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 void Symbole::Affiche() {
-   cout<<Etiquettes[ident];
+    cout << Etiquettes[ident];
 }
 
 bool Symbole::IsTerminal() {
-   return true;
+    return true;
 }
 
 void Entier::Affiche() {
-   Symbole::Affiche();
-   cout<<"("<<valeur<<")";
+    Symbole::Affiche();
+    cout << "(" << valeur << ")";
 }
 
 int Entier::GetValeur() {
-   return valeur;
+    return valeur;
 }
 
 bool Entier::IsTerminal() {
-   return true;
+    return true;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

@@ -1,16 +1,15 @@
-#include <iostream>
-#include "lexer.h"
 #include "automate.h"
+#include "lexer.h"
+#include <iostream>
 
 int main(void) {
-   string chaine("(1+2)*3+(((4+5)+6)*7)+8*9");
+    string chaine("(1+2)*3+(((4+5)+6)*7)+8*9");
 
-   Lexer l(chaine);
+    Lexer l(chaine);
 
-   Automate a(&l);
+    Automate a(&l);
 
-   a.Lecture();
+    a.Lecture();
 
-   return 0;
+    return 0;
 }
-

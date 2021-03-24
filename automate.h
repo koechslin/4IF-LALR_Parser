@@ -9,9 +9,9 @@
 #pragma once
 
 //--------------------------------------------------- Interfaces utilisées
-#include <deque>
-#include "symbole.h"
 #include "lexer.h"
+#include "symbole.h"
+#include <deque>
 
 //------------------------------------------------------------- Constantes
 
@@ -24,30 +24,35 @@
 //------------------------------------------------------------------------
 class Etat;
 class Automate {
-   //----------------------------------------------------------------- PUBLIC
-   public:
-      //----------------------------------------------------- Méthodes publiques
-      void Decalage(Symbole * s, Etat * e);
-      void Reduction(int n, Symbole * s);
-      void Lecture();
-      void Accepter();
-      Symbole * PopSymbole();
-      void SetError();
+    //----------------------------------------------------------------- PUBLIC
+  public:
+    //----------------------------------------------------- Méthodes publiques
+    void Decalage(Symbole * s, Etat * e);
 
-      //------------------------------------------------- Surcharge d'opérateurs
+    void Reduction(int n, Symbole * s);
 
-      //-------------------------------------------- Constructeurs - destructeur
-      Automate(Lexer * l);
-      virtual ~Automate();
+    void Lecture();
 
-   //------------------------------------------------------------------ PRIVE
-   protected:
-      //----------------------------------------------------- Méthodes protégées
+    void Accepter();
 
-      //----------------------------------------------------- Attributs protégés
-      deque <Etat*> pileEtats;
-      deque <Symbole*> pileSymboles;
-      Lexer * lexer;
-      bool error;
+    Symbole * PopSymbole();
+
+    void SetError();
+
+    //------------------------------------------------- Surcharge d'opérateurs
+
+    //-------------------------------------------- Constructeurs - destructeur
+    Automate(Lexer * l);
+
+    virtual ~Automate();
+
+    //------------------------------------------------------------------ PRIVE
+  protected:
+    //----------------------------------------------------- Méthodes protégées
+
+    //----------------------------------------------------- Attributs protégés
+    deque<Etat *> pileEtats;
+    deque<Symbole *> pileSymboles;
+    Lexer * lexer;
+    bool error;
 };
-

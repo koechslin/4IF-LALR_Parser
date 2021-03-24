@@ -21,23 +21,27 @@
 //
 //------------------------------------------------------------------------
 class Expr : public Symbole {
-   //----------------------------------------------------------------- PUBLIC
-   public:
-      //----------------------------------------------------- Méthodes publiques
-      virtual bool IsTerminal();
-      virtual void Affiche();
-      virtual int GetValeur();
-      //------------------------------------------------- Surcharge d'opérateurs
+    //----------------------------------------------------------------- PUBLIC
+  public:
+    //----------------------------------------------------- Méthodes publiques
+    virtual bool IsTerminal();
 
-      //-------------------------------------------- Constructeurs - destructeur
-      Expr(int val) : Symbole(EXPR), valeur(val) {};
-      virtual ~Expr() {};
+    virtual void Affiche();
 
-   //------------------------------------------------------------------ PRIVE
-   protected:
-      //----------------------------------------------------- Méthodes protégées
+    virtual int GetValeur();
 
-      //----------------------------------------------------- Attributs protégés
-      int valeur;
+    //------------------------------------------------- Surcharge d'opérateurs
+
+    //-------------------------------------------- Constructeurs - destructeur
+    Expr(int val)
+        : Symbole(EXPR), valeur(val){};
+
+    virtual ~Expr(){};
+
+    //------------------------------------------------------------------ PRIVE
+  protected:
+    //----------------------------------------------------- Méthodes protégées
+
+    //----------------------------------------------------- Attributs protégés
+    int valeur;
 };
-

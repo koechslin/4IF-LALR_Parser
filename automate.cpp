@@ -22,8 +22,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Automate::Reduction(int n, Symbole *s)
-{
+void Automate::Reduction(int n, Symbole * s) {
     for (int i = 0; i < n; i++) {
         delete (pileEtats.back());
         pileEtats.pop_back();
@@ -32,8 +31,7 @@ void Automate::Reduction(int n, Symbole *s)
     pileEtats.back()->Transition(*this, s);
 }
 
-void Automate::Decalage(Symbole *s, Etat *e)
-{
+void Automate::Decalage(Symbole * s, Etat * e) {
     pileSymboles.push_back(s);
     pileEtats.push_back(e);
     if (s->IsTerminal()) {
@@ -41,9 +39,8 @@ void Automate::Decalage(Symbole *s, Etat *e)
     }
 }
 
-void Automate::Lecture()
-{
-    Symbole *s;
+void Automate::Lecture() {
+    Symbole * s;
     bool fin = false;
     while (!fin) {
         s = lexer->Consulter();
@@ -67,28 +64,25 @@ void Automate::Lecture()
     delete (s);
 }
 
-Symbole *Automate::PopSymbole()
-{
-    Symbole *s = pileSymboles.back();
+Symbole * Automate::PopSymbole() {
+    Symbole * s = pileSymboles.back();
     pileSymboles.pop_back();
     return s;
 }
 
-void Automate::SetError()
-{
+void Automate::SetError() {
     error = true;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Automate::Automate(Lexer *l) : lexer(l), error(false)
-{
+Automate::Automate(Lexer * l)
+    : lexer(l), error(false) {
     pileEtats.push_back(new E0);
 }
 
-Automate::~Automate()
-{
+Automate::~Automate() {
 }
 
 //------------------------------------------------------------------ PRIVE

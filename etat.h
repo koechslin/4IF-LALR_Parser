@@ -25,24 +25,24 @@ using namespace std;
 //
 //------------------------------------------------------------------------
 
-class Etat
-{
+class Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
 
-    virtual bool Transition(Automate &automate, Symbole *s) = 0;
+    virtual bool Transition(Automate & automate, Symbole * s) = 0;
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    Etat(string name) : name(name){};
+    Etat(string name)
+        : name(name){};
 
     virtual ~Etat(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
@@ -50,220 +50,220 @@ protected:
 };
 
 //---------- Interface de la classe <E0> (fichier etat.h) ----------------
-class E0 : public Etat
-{
+class E0 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E0() : Etat("E0"){};
+    E0()
+        : Etat("E0"){};
 
     virtual ~E0(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E1> (fichier etat.h) ----------------
-class E1 : public Etat
-{
+class E1 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E1() : Etat("E1"){};
+    E1()
+        : Etat("E1"){};
 
     virtual ~E1(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E2> (fichier etat.h) ----------------
-class E2 : public Etat
-{
+class E2 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E2() : Etat("E2"){};
+    E2()
+        : Etat("E2"){};
 
     virtual ~E2(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E3> (fichier etat.h) ----------------
-class E3 : public Etat
-{
+class E3 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E3() : Etat("E3"){};
+    E3()
+        : Etat("E3"){};
 
     virtual ~E3(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E4> (fichier etat.h) ----------------
-class E4 : public Etat
-{
+class E4 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E4() : Etat("E4"){};
+    E4()
+        : Etat("E4"){};
 
     virtual ~E4(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E5> (fichier etat.h) ----------------
-class E5 : public Etat
-{
+class E5 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E5() : Etat("E5"){};
+    E5()
+        : Etat("E5"){};
 
     virtual ~E5(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E6> (fichier etat.h) ----------------
-class E6 : public Etat
-{
+class E6 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E6() : Etat("E6"){};
+    E6()
+        : Etat("E6"){};
 
     virtual ~E6(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E7> (fichier etat.h) ----------------
-class E7 : public Etat
-{
+class E7 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E7() : Etat("E7"){};
+    E7()
+        : Etat("E7"){};
 
     virtual ~E7(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E8> (fichier etat.h) ----------------
-class E8 : public Etat
-{
+class E8 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E8() : Etat("E8"){};
+    E8()
+        : Etat("E8"){};
 
     virtual ~E8(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
 };
 
 //---------- Interface de la classe <E9> (fichier etat.h) ----------------
-class E9 : public Etat
-{
+class E9 : public Etat {
     //----------------------------------------------------------------- PUBLIC
-public:
+  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual bool Transition(Automate &automate, Symbole *s);
+    virtual bool Transition(Automate & automate, Symbole * s);
 
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    E9() : Etat("E9"){};
+    E9()
+        : Etat("E9"){};
 
     virtual ~E9(){};
 
     //------------------------------------------------------------------ PRIVE
-protected:
+  protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
