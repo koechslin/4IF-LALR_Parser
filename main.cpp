@@ -11,7 +11,7 @@ void AfficherAide() {
          << endl;
     cout << "La grammaire autorisée est : + - * ( ) INT" << endl
          << endl;
-    cout << "  -t \tPermet d'afficher l'arbre syntaxique de l'expression saisie" << endl;
+    cout << "  -t \tPermet de générer le fichier 'arbre.png' qui représente l'arbre syntaxique de l'expression saisie" << endl;
 }
 
 int main(int argc, char ** argv) {
