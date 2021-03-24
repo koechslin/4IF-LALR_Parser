@@ -7,11 +7,15 @@
 using namespace std;
 
 void AfficherAide() {
-    cout << "Utilisation : ./parser [-t] EXPRESSION" << endl
+    cout << "\nUtilisation : ./parser [-t] EXPRESSION" << endl
+         << endl;
+
+    cout << "Pour éviter tout conflit avec le terminal vous pouvez entourer l'expression avec des guillemets" << endl
          << endl;
     cout << "La grammaire autorisée est : + - * ( ) INT" << endl
          << endl;
-    cout << "  -t \tPermet de générer le fichier 'arbre.png' qui représente l'arbre syntaxique de l'expression saisie" << endl;
+    cout << "  -t \tPermet de générer le fichier 'arbre.png' qui représente l'arbre syntaxique de l'expression saisie" << endl
+         << endl;
 }
 
 int main(int argc, char ** argv) {
