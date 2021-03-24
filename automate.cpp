@@ -10,7 +10,9 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
+#include <fstream>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 //------------------------------------------------------ Include personnel
@@ -72,6 +74,43 @@ Symbole * Automate::PopSymbole() {
 
 void Automate::SetError() {
     error = true;
+}
+
+void Automate::AjouterNode(Node * node) {
+    this->treeNodes.push_back(node);
+}
+
+Node * Automate::PopNode() {
+    Node * ret = this->treeNodes.back();
+    this->treeNodes.pop_back();
+    return ret;
+}
+
+void Automate::ExporterArbre() {
+    stringstream nodes;
+    stringstream edges;
+    int n = 0;
+    this->treeNodes.back()->ExporterNode(nodes, edges, n);
+
+    ofstream tmpDotFile("tmp.dot");
+    if (tmpDotFile.is_open()) {
+        tmpDotFile << "digraph {\n"
+                      "\tordering=out;\n"
+                      "\tranksep=.4;\n"
+                      "\tnode [shape=box, fixedsize=false, fontsize=12, fontname=\"Helvetica\", fontcolor=\"blue\"\n"
+                      "\t\twidth=.25, height=.25, color=\"black\", fillcolor=\"lightgrey\", style=\"filled, solid\"];\n"
+                      "\tedge [arrowsize=.5, color=\"black\"]\n\n" +
+                          nodes.str() + edges.str() + "}\n";
+
+        tmpDotFile.close();
+        system("dot -Tpng -o arbre.png tmp.dot");
+    } else {
+        cout << "Erreur lors de la création du fichier intermédiaire 'tmp.dot'" << endl;
+    }
+}
+
+bool Automate::GetError() {
+    return this->error;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

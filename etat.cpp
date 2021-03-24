@@ -107,6 +107,7 @@ bool E3::Transition(Automate & automate, Symbole * s) {
         case FIN:
             entier = (Entier *)automate.PopSymbole();
             automate.Reduction(1, new Expr(entier->GetValeur()));
+            automate.AjouterNode(new Node(to_string(entier->GetValeur())));
             delete (entier);
             break;
         default:
@@ -197,6 +198,8 @@ bool E6::Transition(Automate & automate, Symbole * s) {
 bool E7::Transition(Automate & automate, Symbole * s) {
     Expr * expr1;
     Expr * expr2;
+    Node * noeud1;
+    Node * noeud2;
     switch (*s) {
         case PLUS:
         case CLOSEPAR:
@@ -205,6 +208,9 @@ bool E7::Transition(Automate & automate, Symbole * s) {
             delete (automate.PopSymbole()); // On enlève le '+'
             expr2 = (Expr *)automate.PopSymbole();
             automate.Reduction(3, new Expr(expr1->GetValeur() + expr2->GetValeur()));
+            noeud2 = automate.PopNode();
+            noeud1 = automate.PopNode();
+            automate.AjouterNode(new Node("Expr", noeud1, new Node("+"), noeud2));
             delete (expr1);
             delete (expr2);
             break;
@@ -227,6 +233,8 @@ bool E7::Transition(Automate & automate, Symbole * s) {
 bool E8::Transition(Automate & automate, Symbole * s) {
     Expr * expr1;
     Expr * expr2;
+    Node * noeud1;
+    Node * noeud2;
     switch (*s) {
         case PLUS:
         case MULT:
@@ -236,6 +244,9 @@ bool E8::Transition(Automate & automate, Symbole * s) {
             delete (automate.PopSymbole()); // On enlève le '*'
             expr2 = (Expr *)automate.PopSymbole();
             automate.Reduction(3, new Expr(expr1->GetValeur() * expr2->GetValeur()));
+            noeud2 = automate.PopNode();
+            noeud1 = automate.PopNode();
+            automate.AjouterNode(new Node("Expr", noeud1, new Node("*"), noeud2));
             delete (expr1);
             delete (expr2);
             break;

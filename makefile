@@ -11,12 +11,10 @@ $(MAIN) : $(OBJS)
 %.o : %.cpp
 	@$(CC) $(CFLAGS) -c $^
 
-.PHONY : launch
-
-launch : $(MAIN)
-	@./$(MAIN)
+help: $(MAIN)
+	@./$(MAIN) -h
 
 .PHONY : clean
 
 clean :
-	rm -f $(MAIN) *.o core
+	@rm -f $(MAIN) *.o core
