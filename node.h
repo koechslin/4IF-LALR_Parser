@@ -35,7 +35,7 @@ class Node {
     Node(string label, Node * c1 = nullptr, Node * c2 = nullptr, Node * c3 = nullptr)
         : label(label), child1(c1), child2(c2), child3(c3){};
 
-    virtual ~Node() = default;
+    virtual ~Node();
 
     //------------------------------------------------------------------ PRIVE
   protected:

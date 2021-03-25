@@ -126,6 +126,9 @@ Automate::Automate(Lexer * l)
 }
 
 Automate::~Automate() {
+    for (Node * node : this->treeNodes) {
+        delete (node);
+    }
 }
 
 //------------------------------------------------------------------ PRIVE

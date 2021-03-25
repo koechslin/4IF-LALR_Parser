@@ -45,7 +45,11 @@ void Node::ExporterNode(stringstream & nodes, stringstream & edges, int & nodeNu
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-
+Node::~Node() {
+    delete (child1);
+    delete (child2);
+    delete (child3);
+}
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
