@@ -29,7 +29,7 @@ void Etat::AfficherErreur(Automate & automate, Symbole * s, string etat, string 
     cout << "Erreur dans l'état " << etat << " : " << endl;
     cout << "" << automate.GetLexer()->GetFlux() << "\n";
 
-    int iMax = *s == FIN ? automate.GetLexer()->GetTete() : automate.GetLexer()->GetTete() - 1;
+    int iMax = *s == FIN || *s == ERREUR ? automate.GetLexer()->GetTete() : automate.GetLexer()->GetTete() - 1;
 
     for (int i = 0; i < iMax; i++) {
         cout << " ";
@@ -38,11 +38,11 @@ void Etat::AfficherErreur(Automate & automate, Symbole * s, string etat, string 
     cout << "^\n";
 
     if (*s == ERREUR) {
-        cout << "Symbole '" << automate.GetLexer()->GetFlux()[automate.GetLexer()->GetTete() - 1] << "' non reconnu." << endl;
+        cout << "Symbole '" << automate.GetLexer()->GetFlux()[iMax] << "' non reconnu." << endl;
     } else if (*s == FIN) {
         cout << "Symbole 'FIN' inattendu." << endl;
     } else {
-        cout << "Symbole '" << automate.GetLexer()->GetFlux()[automate.GetLexer()->GetTete() - 1] << "' inattendu." << endl;
+        cout << "Symbole '" << automate.GetLexer()->GetFlux()[iMax] << "' inattendu." << endl;
     }
 
     cout << "Symboles attendus : " << grammaireAutorisee << endl;
