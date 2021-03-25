@@ -12,7 +12,7 @@ void AfficherAide() {
 
     cout << "Pour éviter tout conflit avec le terminal vous pouvez entourer l'expression avec des guillemets" << endl
          << endl;
-    cout << "La grammaire autorisée est : + - * ( ) INT" << endl
+    cout << "La grammaire autorisée est : + * ( ) INT" << endl
          << endl;
     cout << "  -t \tPermet de générer le fichier 'arbre.png' qui représente l'arbre syntaxique de l'expression saisie" << endl
          << endl;
